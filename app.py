@@ -17,7 +17,7 @@ For full report visit https://github.com/JakeWellian/Python_projects/blob/main/B
 """)
 
 # ---- READ EXCEL ----
-@st.cache
+@st.cache_data
 def get_data():
     return pd.read_csv("BMI_python_streamline.csv")
 
