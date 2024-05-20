@@ -1,6 +1,5 @@
 pandas
-plotly
+plotly>=5.0.0
 plotly.express
 streamlit
-plotly.graph_objects
 datetime
