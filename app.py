@@ -3,7 +3,7 @@ import plotly.express as px
 import streamlit as st 
 from datetime import datetime
 
-
+error error
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Global BMI Report", page_icon=":bar_chart:", layout="wide")
 
