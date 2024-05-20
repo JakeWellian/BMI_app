@@ -9,7 +9,7 @@ st.set_page_config(page_title="Global BMI Report", page_icon=":bar_chart:", layo
 
 # ---- MAINPAGE ----
 st.write("""
-# :bar_chart:Global BMI Report
+# Global BMI Report
 
 The goal is to put a spotlight on the current BMI trends globally and to perform an in-depth analysis of the situation using analytical and visual tools to highlight key trends. The data is based on the BMI of 200 countries from 1975 - 2016, a 41 year period. This dataset will be extended once additional data is supplied by NCD-RisC.
 
