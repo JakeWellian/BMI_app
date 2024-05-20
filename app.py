@@ -79,30 +79,23 @@ country_age_sex_data = grouped_country_data[(grouped_country_data['country'].str
 user_bmi = user_weight / ((user_height / 100) ** 2)
 
 # Plot the data
-fig = px.line()
+fig = go.Figure()
 
-# Add traces
-fig.add_scatter(
+fig.add_trace(go.Scatter(
     x=age_sex_data['year'], 
     y=age_sex_data['mean_body_mass_index'], 
     mode='lines+markers', 
     name=f'World Average ({user_sex.capitalize()} & {user_year_of_birth})'
-)
+))
 
-fig.add_scatter(
+fig.add_trace(go.Scatter(
     x=country_age_sex_data['year'], 
     y=country_age_sex_data['mean_body_mass_index'], 
     mode='lines+markers', 
     name=f'{user_country.capitalize()} BMI ({user_sex.capitalize()} & {user_year_of_birth})'
-)
+))
 
-# Add horizontal lines
-fig.add_hline(y=user_bmi, line_dash='dash', line_color='black', name="Your BMI")
-fig.add_hline(y=18.5, line_dash='dash', line_color='green', annotation_text="Healthy Weight", annotation_position="bottom right")
-fig.add_hline(y=25.0, line_dash='dash', line_color='orange', annotation_text="Overweight", annotation_position="bottom right")
-fig.add_hline(y=30.0, line_dash='dash', line_color='red', annotation_text="Obese", annotation_position="bottom right")
-
-# Add annotation
+fig.add_hline(y=user_bmi, line=dict(color='black', dash='dash'), name="Your BMI")
 fig.add_annotation(
     x=2010,  # Adjust x position as needed
     y=user_bmi,
@@ -111,17 +104,19 @@ fig.add_annotation(
     yshift=10
 )
 
-# Update layout
+fig.add_hline(y=18.5, line=dict(color='green', dash='dash'), annotation_text="Healthy Weight", annotation_position="bottom right")
+fig.add_hline(y=25.0, line=dict(color='orange', dash='dash'), annotation_text="Overweight", annotation_position="bottom right")
+fig.add_hline(y=30.0, line=dict(color='red', dash='dash'), annotation_text="Obese", annotation_position="bottom right")
+
 fig.update_layout(
     title=f'Average BMI per Year for {user_country.capitalize()} vs. World Average',
     xaxis_title='Year',
     yaxis_title='Average BMI',
     xaxis=dict(range=[1975, 2016]),
-    yaxis=dict(range=[10, 45]),
-    width=1500,
-    height=700
+    yaxis=dict(range=[10, 45])
 )
 
+fig.update_layout(width=1500,height=700)
 # Display the plot
 st.plotly_chart(fig)
 
